@@ -532,7 +532,7 @@ public final class StdRandom {
      * @return an array of length {@code n} that is a uniformly random permutation
      *         of {@code 0}, {@code 1}, ..., {@code n-1}
      */
-    public static int[] permutation(int n) {
+    public static int[] ranpermutation(int n) {
         if (n < 0) throw new IllegalArgumentException("argument is negative");
         int[] perm = new int[n];
         for (int i = 0; i < n; i++)
