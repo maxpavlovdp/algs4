@@ -21,6 +21,7 @@ public class Percolation {
 
     // open site (row, col) if it is not open already
     public void open(int row, int col) {
+//        System.out.println("row: " + row + ",col: " + col);
         int currentSitePos = currentSite(row, col);
         validate(currentSitePos);
 
@@ -115,7 +116,7 @@ public class Percolation {
     }
 
     private void validate(int pos) {
-        if (pos < 0 || pos >= siteCount) throw new IndexOutOfBoundsException();
+        if (pos < 0 || pos >= siteCount) throw new IndexOutOfBoundsException("pos is: " + pos);
     }
 
     /**
@@ -158,8 +159,6 @@ public class Percolation {
     // test client (optional)
     public static void main(String[] args) {
         Percolation perc = new Percolation(3);
-        WeightedQuickUnionUF qu = new WeightedQuickUnionUF(3 * 3);
-
 
         System.out.println(perc.isFull(2, 2));
         perc.open(1, 1);
@@ -169,14 +168,5 @@ public class Percolation {
         System.out.println(perc.isFull(2, 2));
         System.out.println(perc.isFull(3, 2));
         System.out.println(perc.percolates());
-
-
-//        System.out.println(17 % 5);
-//        qu.union(6, 3);
-//        System.out.println(qu.find(6));
-
-//        System.out.println("args = [" + perc.twoDtoOneD(1, 2) + "]");
-//        System.out.println("args = [" + perc.twoDtoOneD(2, 2) + "]");
-//        System.out.println("args = [" + perc.twoDtoOneD(3, 3) + "]");
     }
 }
