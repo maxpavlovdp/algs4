@@ -31,11 +31,11 @@ public class Percolation {
 
         openSites[currentSitePos] = 1;
         if (row == 1) {
-            connectWithTop(currentSitePos);
+            connectTopRow(currentSitePos);
         } else if (row < gridSize) {
             connectWithSiblings(row, col);
         } else if (row == gridSize) {
-            connectWithBottom(currentSitePos);
+            connectBottomRow(currentSitePos);
         }
     }
 
@@ -105,12 +105,12 @@ public class Percolation {
         return twoDtoOneD(row - 1, col);
     }
 
-    private void connectWithTop(int pos) {
+    private void connectTopRow(int pos) {
         ufSites.union(0, pos);
-        if (openSites[pos + gridSize] == 1) ufSites.union(pos, pos + 2);
+        if (openSites[pos + gridSize] == 1) ufSites.union(pos, pos + gridSize);
     }
 
-    private void connectWithBottom(int pos) {
+    private void connectBottomRow(int pos) {
         ufSites.union(pos, siteCount - 1);
         if (openSites[pos - gridSize] == 1) ufSites.union(pos, pos - gridSize);
     }
@@ -161,12 +161,8 @@ public class Percolation {
         Percolation perc = new Percolation(3);
 
         System.out.println(perc.isFull(2, 2));
-        perc.open(1, 1);
-        perc.open(2, 1);
         perc.open(2, 2);
-        perc.open(3, 2);
+        perc.open(1, 2);
         System.out.println(perc.isFull(2, 2));
-        System.out.println(perc.isFull(3, 2));
-        System.out.println(perc.percolates());
     }
 }

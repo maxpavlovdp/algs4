@@ -71,8 +71,8 @@ public class PercolationStats {
 
     // test client (described below)
     public static void main(String[] args) {
-        int n = Integer.valueOf(args[0]).intValue();
-        int t = Integer.valueOf(args[1]).intValue();
+        int n = Integer.parseInt(args[0]);
+        int t = Integer.parseInt(args[1]);
         System.out.println("N: " + n + ", T: " + t);
 
         PercolationStats ps = new PercolationStats(n, t);
