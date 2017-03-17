@@ -3,15 +3,15 @@ package edu.algs4.hometasks.ht2StacksAndQueue;
 /**
  * Created by Maksym Pavlov on 3/14/17.
  */
-public class StackLinked {
+public class StackLinked<T> {
     private Node current = null;
 
     class Node {
-        String element;
+        T element;
         Node next;
     }
 
-    public void push(String s) {
+    public void push(T s) {
         Node newNode = new Node();
         newNode.element = s;
         newNode.next = current;
@@ -19,8 +19,8 @@ public class StackLinked {
         current = newNode;
     }
 
-    public String pull() {
-        String result = current.element;
+    public T pull() {
+        T result = current.element;
 
         current = current.next;
 
