@@ -3,15 +3,15 @@ package edu.algs4.hometasks.ht2StacksAndQueue;
 /**
  * Created by Maksym Pavlov on 3/17/17.
  */
-public class StackArrayed {
-    private String[] array;
+public class StackArrayed<T> {
+    private T[] array;
     private int pointer = 0;
 
     StackArrayed(int initSize) {
-        this.array = new String[initSize];
+        this.array = (T[]) new Object[initSize];
     }
 
-    public void push(String e) {
+    public void push(T e) {
         if (pointer >= array.length) {
             increaseContainer();
         }
@@ -20,7 +20,7 @@ public class StackArrayed {
     }
 
     private void increaseContainer() {
-        String[] newCont = new String[array.length * 2];
+        T[] newCont = (T[]) new Object[array.length * 2];
         int i = 0;
         while (i < array.length) {
             newCont[i] = array[i];
@@ -30,12 +30,12 @@ public class StackArrayed {
         array = newCont;
     }
 
-    public String poll() {
+    public T poll() {
         if (pointer > 0) {
-            String result = array[--pointer];
+            T result = array[--pointer];
 
             if (pointer == array.length / 4) {
-                String[] shrinkedArray = new String[array.length/2];
+                T[] shrinkedArray = (T[]) new Object[array.length / 2];
                 int i = 0;
                 while (i < shrinkedArray.length) {
                     shrinkedArray[i] = array[i];
