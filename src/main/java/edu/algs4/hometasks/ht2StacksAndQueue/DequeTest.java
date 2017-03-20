@@ -134,4 +134,23 @@ public class DequeTest {
 
         assertEquals(new Integer(5), deque.iterator().next());
     }
+
+    @Test
+    public void addFirstAndRemoveLast() {
+        deque.addFirst(new Integer(5));
+        assertEquals(new Integer(5), deque.removeLast());
+    }
+
+    @Test
+    public void addLastAndRemoveFirst() {
+        deque.addLast(new Integer(5));
+        assertEquals(new Integer(5), deque.removeFirst());
+    }
+
+    @Test
+    public void addLastAndRemoveFirstWithTwo() {
+        deque.addLast(new Integer(5));
+        deque.addLast(new Integer(10));
+        assertEquals(new Integer(5), deque.removeFirst());
+    }
 }
