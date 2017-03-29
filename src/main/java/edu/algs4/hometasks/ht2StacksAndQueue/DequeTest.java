@@ -108,7 +108,10 @@ public class DequeTest {
         deque.addFirst(new Integer(4));
 
         for (Integer i : deque) {
-            System.out.println(i);
+            System.out.println("outer: " + i);
+            for (Integer j : deque) {
+                System.out.println("inner: " + j);
+            }
         }
     }
 
