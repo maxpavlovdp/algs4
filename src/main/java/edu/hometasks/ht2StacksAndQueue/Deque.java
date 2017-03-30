@@ -109,6 +109,7 @@ public class Deque<Item> implements Iterable<Item> {
         if (size == 0) throw new NoSuchElementException();
         Item result = f.content;
         if (f.next != null) {
+            f.next.prev = null;
             f = f.next;
         } else {
             f = l = null;

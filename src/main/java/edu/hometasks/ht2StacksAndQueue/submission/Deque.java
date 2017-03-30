@@ -2,6 +2,16 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * Created by Maksym Pavlov on 3/20/17.
+ * Dequeue. A double-ended queue or deque (pronounced "deck") is a generalization of a stack and a queue that supports adding and removing items from either the front or the back of the data structure. Create a generic data type Deque that implements the following API:
+ * <p>
+ * Corner cases. Throw a java.lang.NullPointerException if the client attempts to add a null item; throw a java.util.NoSuchElementException
+ * if the client attempts to remove an item from an empty deque; throw a java.lang.UnsupportedOperationException
+ * if the client calls the remove() method in the iterator; throw a java.util.NoSuchElementException if the client calls the next()
+ * method in the iterator and there are no more items to return.
+ */
+
 
 public class Deque<Item> implements Iterable<Item> {
     private class Node<ItemN> {
@@ -98,6 +108,7 @@ public class Deque<Item> implements Iterable<Item> {
         if (size == 0) throw new NoSuchElementException();
         Item result = f.content;
         if (f.next != null) {
+            f.next.prev = null;
             f = f.next;
         } else {
             f = l = null;

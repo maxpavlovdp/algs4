@@ -188,21 +188,11 @@ public class DequeTest {
 
     @Test
     public void aFaLrFrL() {
-        deque.addFirst(4);
-        deque.addLast(5);
+        deque.addFirst(6);
+        deque.addLast(7);
         deque.removeFirst();
         deque.removeLast();
-        deque.addFirst(4);
-        deque.addLast(5);
-        deque.removeFirst();
-        deque.removeLast();
-        deque.addFirst(4);
-        deque.addLast(5);
-        deque.removeFirst();
-        deque.removeLast();
-        deque.addFirst(4);
-        deque.addLast(5);
-        deque.removeFirst();
-        assertEquals(new Integer(5), deque.removeLast());
+        deque.addFirst(10);
+        assertEquals(new Integer(10), deque.removeLast());
     }
 }
