@@ -1,4 +1,4 @@
-package edu.algs4.hometasks.ht2StacksAndQueue;
+package edu.hometasks.ht2StacksAndQueue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -155,5 +155,54 @@ public class DequeTest {
         deque.addLast(new Integer(5));
         deque.addLast(new Integer(10));
         assertEquals(new Integer(5), deque.removeFirst());
+    }
+
+    @Test
+    public void removeLTwice() {
+        deque.addFirst(0);
+        deque.addFirst(1);
+        deque.removeLast();
+        deque.removeLast();
+    }
+
+    @Test
+    public void removeFTwice() {
+        deque.addLast(0);
+        deque.addLast(1);
+        deque.removeFirst();
+        deque.removeFirst();
+    }
+
+    @Test
+    public void randomRemove() {
+        deque.addFirst(0);
+        deque.removeLast();
+        deque.addFirst(2);
+        deque.removeLast();
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void itrWhenNextEmpty() {
+        deque.iterator().next();
+    }
+
+    @Test
+    public void aFaLrFrL() {
+        deque.addFirst(4);
+        deque.addLast(5);
+        deque.removeFirst();
+        deque.removeLast();
+        deque.addFirst(4);
+        deque.addLast(5);
+        deque.removeFirst();
+        deque.removeLast();
+        deque.addFirst(4);
+        deque.addLast(5);
+        deque.removeFirst();
+        deque.removeLast();
+        deque.addFirst(4);
+        deque.addLast(5);
+        deque.removeFirst();
+        assertEquals(new Integer(5), deque.removeLast());
     }
 }

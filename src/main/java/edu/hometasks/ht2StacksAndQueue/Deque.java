@@ -1,4 +1,4 @@
-package edu.algs4.hometasks.ht2StacksAndQueue;
+package edu.hometasks.ht2StacksAndQueue;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -15,17 +15,17 @@ import java.util.NoSuchElementException;
 
 
 public class Deque<Item> implements Iterable<Item> {
-    private class Node<Item> {
+    private class Node<ItemN> {
         Node next;
         Node prev;
-        Item content;
+        ItemN content;
 
-        Node(Item content) {
+        Node(ItemN content) {
             this.content = content;
         }
     }
 
-    private class DItr<Item> implements Iterator<Item> {
+    private class DItr implements Iterator<Item> {
         Node<Item> current;
 
         @Override
@@ -35,6 +35,8 @@ public class Deque<Item> implements Iterable<Item> {
 
         @Override
         public Item next() {
+            if(!hasNext()) throw new NoSuchElementException();
+
             Item result = current.content;
             current = current.next;
 
@@ -75,6 +77,7 @@ public class Deque<Item> implements Iterable<Item> {
         } else {
             Node newFirst = new Node(item);
             newFirst.next = f;
+            f.prev = newFirst;
             f = newFirst;
         }
 
@@ -93,8 +96,8 @@ public class Deque<Item> implements Iterable<Item> {
             putFirst(item);
         } else {
             Node newLast = new Node(item);
-            l.next = newLast;
             newLast.prev = l;
+            l.next = newLast;
             l = newLast;
         }
 
@@ -107,6 +110,8 @@ public class Deque<Item> implements Iterable<Item> {
         Item result = f.content;
         if (f.next != null) {
             f = f.next;
+        } else {
+            f = l = null;
         }
         size--;
         return result;
@@ -115,18 +120,21 @@ public class Deque<Item> implements Iterable<Item> {
     // remove and return the item from the end
     public Item removeLast() {
         if (size == 0) throw new NoSuchElementException();
+
         Item result = l.content;
         if (l.prev != null) {
             l.prev.next = null;
+            l = l.prev;
+        } else {
+            l = f = null;
         }
         size--;
-        l = l.prev;
         return result;
     }
 
     // return an iterator over items in order from front to end
     public Iterator<Item> iterator() {
-        DItr<Item> itr = new DItr<Item>();
+        DItr itr = new DItr();
         itr.current = f;
         return itr;
     }

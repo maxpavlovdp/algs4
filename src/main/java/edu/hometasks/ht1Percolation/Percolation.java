@@ -1,4 +1,4 @@
-package edu.algs4.hometasks.ht1Percolation;
+package edu.hometasks.ht1Percolation;
 
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 

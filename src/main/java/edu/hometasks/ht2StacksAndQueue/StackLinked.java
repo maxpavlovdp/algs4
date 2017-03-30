@@ -1,4 +1,4 @@
-package edu.algs4.hometasks.ht2StacksAndQueue;
+package edu.hometasks.ht2StacksAndQueue;
 
 /**
  * Created by Maksym Pavlov on 3/14/17.

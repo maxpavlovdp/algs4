@@ -1,4 +1,4 @@
-package edu.algs4.hometasks.ht1Percolation;
+package edu.hometasks.ht1Percolation;
 
 /**
  * Created by Maksym Pavlov on 3/13/17.

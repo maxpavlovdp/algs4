@@ -1,8 +1,9 @@
-package edu.algs4.hometasks.ht2StacksAndQueue;
+package edu.hometasks.ht2StacksAndQueue;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
@@ -64,5 +65,32 @@ public class RandomizedQueueTest {
     @Test
     public void itrHasNextFalseWhenEmpry() {
         assertFalse(rQueue.iterator().hasNext());
+    }
+
+    @Test
+    public void itrNextReturnsFirst() {
+        rQueue.enqueue(6);
+        assertEquals(new Integer(6), rQueue.iterator().next());
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void itrRemoveThrowsExcn() {
+        rQueue.iterator().remove();
+    }
+
+    @Test (expected = NoSuchElementException.class)
+    public void itrThrowsExcWhenNoElements() {
+        rQueue.iterator().next();
+    }
+
+    @Test
+    public void twoItr(){
+        rQueue.enqueue(5);
+        rQueue.enqueue(7);
+        Iterator<Integer> itr = rQueue.iterator();
+        while (itr.hasNext()){
+            itr.next();
+            assertEquals(new Integer(5), rQueue.iterator().next());
+        }
     }
 }

@@ -1,4 +1,4 @@
-/******************************************************************************
+package edu.hometasks.ht1Percolation.testing; /******************************************************************************
  *  Compilation:  javac InteractivePercolationVisualizer.java
  *  Execution:    java InteractivePercolationVisualizer n
  *  Dependencies: PercolationVisualizer.java edu.princeton.cs.algs4.edu.algs4.hometasks.ht1Percolation.Percolation.java

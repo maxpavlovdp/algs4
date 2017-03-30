@@ -1,4 +1,4 @@
-package edu.algs4.hometasks.ht2StacksAndQueue;
+package edu.hometasks.ht2StacksAndQueue;
 
 import edu.princeton.cs.algs4.StdRandom;
 
@@ -19,8 +19,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private Item[] arr;
     private int size = 0;
 
-    private class Itr<Item> implements Iterator<Item> {
+    private class Itr implements Iterator<Item> {
         private int current = 0;
+        private Item[] arrCopy;
+
+        Itr() {
+            this.arrCopy = RandomizedQueue.this.arr;
+            StdRandom.shuffle(this.arrCopy);
+        }
 
         public boolean hasNext() {
             return this.current < RandomizedQueue.this.size;
@@ -28,7 +34,13 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         @Override
         public Item next() {
-            return null;
+            if (!hasNext()) throw new NoSuchElementException();
+            return arrCopy[current++];
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
         }
     }
 
@@ -49,6 +61,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // add the item
     public void enqueue(Item item) {
+        if (item == null) throw new NullPointerException();
         if (arr.length == size) {
             doubleArraySize();
         }
@@ -89,27 +102,16 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // return (but do not remove) a random item
     public Item sample() {
+        if (size == 0) throw new NoSuchElementException();
         return arr[StdRandom.uniform(size)];
     }
 
     // return an independent iterator over items in random order
     public Iterator<Item> iterator() {
-        return new Itr<Item>();
+        return new Itr();
     }
 
     // unit testing (optional)
     public static void main(String[] args) {
-        int[] ar = {1, 2, 3};
-        int i = 0;
-        int j = 0;
-        System.out.println(ar[i++]);
-        System.out.println(ar[++j]);
-
-        String[] starr = {"one", "two"};
-        String retrived = starr[0];
-        System.out.println(retrived);
-        starr[0] = null;
-        System.out.println(retrived);
-
     }
 }
