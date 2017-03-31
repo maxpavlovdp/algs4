@@ -6,22 +6,22 @@ Compilation:  FAILED (0 errors, 13 warnings)
 API:          PASSED
 
 Findbugs:     FAILED (3 warnings)
-Checkstyle:   FAILED (12 warnings)
+Checkstyle:   FAILED (15 warnings)
 
-Correctness:  36/43 tests passed
-Memory:       36/53 tests passed
+Correctness:  37/43 tests passed
+Memory:       49/53 tests passed
 Timing:       110/110 tests passed
 
-Aggregate score: 82.03%
+Aggregate score: 85.87%
 [Compilation: 5%, API: 5%, Findbugs: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
 
 ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
-3.0K Mar 30 22:02 Deque.java
- 554 Mar 30 22:02 Permutation.java
-4.3K Mar 30 22:02 RandomizedQueue.java
+3.7K Mar 30 22:32 Deque.java
+ 554 Mar 30 22:32 Permutation.java
+4.3K Mar 30 22:32 RandomizedQueue.java
 
 
 ********************************************************************************
@@ -31,66 +31,66 @@ The following files were submitted:
 
 % javac Deque.java
 *-----------------------------------------------------------
-Deque.java:8: warning: [rawtypes] found raw type: Deque.Node
+Deque.java:18: warning: [rawtypes] found raw type: Deque.Node
         Node next;
         ^
   missing type arguments for generic class Deque<Item>.Node<ItemN>
   where ItemN,Item are type-variables:
     ItemN extends Object declared in class Deque.Node
     Item extends Object declared in class Deque
-Deque.java:9: warning: [rawtypes] found raw type: Deque.Node
+Deque.java:19: warning: [rawtypes] found raw type: Deque.Node
         Node prev;
         ^
   missing type arguments for generic class Deque<Item>.Node<ItemN>
   where ItemN,Item are type-variables:
     ItemN extends Object declared in class Deque.Node
     Item extends Object declared in class Deque
-Deque.java:30: warning: [unchecked] unchecked conversion
+Deque.java:40: warning: [unchecked] unchecked conversion
             current = current.next;
                              ^
   required: Deque<Item>.Node<Item>
   found:    Deque.Node
   where Item is a type-variable:
     Item extends Object declared in class Deque
-Deque.java:67: warning: [rawtypes] found raw type: Deque.Node
+Deque.java:77: warning: [rawtypes] found raw type: Deque.Node
             Node newFirst = new Node(item);
             ^
   missing type arguments for generic class Deque<Item>.Node<ItemN>
   where ItemN,Item are type-variables:
     ItemN extends Object declared in class Deque.Node
     Item extends Object declared in class Deque
-Deque.java:67: warning: [rawtypes] found raw type: Deque.Node
+Deque.java:77: warning: [rawtypes] found raw type: Deque.Node
             Node newFirst = new Node(item);
                                 ^
   missing type arguments for generic class Deque<Item>.Node<ItemN>
   where ItemN,Item are type-variables:
     ItemN extends Object declared in class Deque.Node
     Item extends Object declared in class Deque
-Deque.java:67: warning: [unchecked] unchecked call to Deque.Node(ItemN) as a member of the raw type Deque.Node
+Deque.java:77: warning: [unchecked] unchecked call to Deque.Node(ItemN) as a member of the raw type Deque.Node
             Node newFirst = new Node(item);
                             ^
   where ItemN is a type-variable:
     ItemN extends Object declared in class Deque.Node
-Deque.java:70: warning: [unchecked] unchecked conversion
+Deque.java:80: warning: [unchecked] unchecked conversion
             f = newFirst;
                 ^
   required: Deque<Item>.Node<Item>
   found:    Deque.Node
   where Item is a type-variable:
     Item extends Object declared in class Deque
-Deque.java:77: warning: [rawtypes] found raw type: Deque.Node
+Deque.java:87: warning: [rawtypes] found raw type: Deque.Node
         f = new Node(item);
                 ^
   missing type arguments for generic class Deque<Item>.Node<ItemN>
   where ItemN,Item are type-variables:
     ItemN extends Object declared in class Deque.Node
     Item extends Object declared in class Deque
-Deque.java:77: warning: [unchecked] unchecked call to Deque.Node(ItemN) as a member of the raw type Deque.Node
+Deque.java:87: warning: [unchecked] unchecked call to Deque.Node(ItemN) as a member of the raw type Deque.Node
         f = new Node(item);
             ^
   where ItemN is a type-variable:
     ItemN extends Object declared in class Deque.Node
-Deque.java:77: warning: [unchecked] unchecked conversion
+Deque.java:87: warning: [unchecked] unchecked conversion
         f = new Node(item);
             ^
   required: Deque<Item>.Node<Item>
@@ -160,19 +160,22 @@ Warnings generated: 3
 
 % checkstyle *.java
 *-----------------------------------------------------------
-Deque.java:8:14: The instance (or static) variable 'next' must be private. [VisibilityModifier]
-Deque.java:9:14: The instance (or static) variable 'prev' must be private. [VisibilityModifier]
-Deque.java:10:15: The instance (or static) variable 'content' must be private. [VisibilityModifier]
-Deque.java:18:20: The instance (or static) variable 'current' must be private. [VisibilityModifier]
-Deque.java:27:15: 'if' is not followed by whitespace. [WhitespaceAfter]
-Deque.java:81:7: '//' or '/*' is not followed by whitespace. [IllegalTokenText]
-Deque.java:103:19: Inner assignments should be avoided. [InnerAssignment]
-Deque.java:118:19: Inner assignments should be avoided. [InnerAssignment]
+Deque.java:7: Line is longer than 128 characters (currently 269). [LineLength]
+Deque.java:9: Line is longer than 128 characters (currently 139). [LineLength]
+Deque.java:11: Line is longer than 128 characters (currently 131). [LineLength]
+Deque.java:18:14: The instance (or static) variable 'next' must be private. [VisibilityModifier]
+Deque.java:19:14: The instance (or static) variable 'prev' must be private. [VisibilityModifier]
+Deque.java:20:15: The instance (or static) variable 'content' must be private. [VisibilityModifier]
+Deque.java:28:20: The instance (or static) variable 'current' must be private. [VisibilityModifier]
+Deque.java:37:15: 'if' is not followed by whitespace. [WhitespaceAfter]
+Deque.java:91:7: '//' or '/*' is not followed by whitespace. [IllegalTokenText]
+Deque.java:114:19: Inner assignments should be avoided. [InnerAssignment]
+Deque.java:129:19: Inner assignments should be avoided. [InnerAssignment]
 RandomizedQueue.java:10: Line is longer than 128 characters (currently 242). [LineLength]
 RandomizedQueue.java:11: Line is longer than 128 characters (currently 242). [LineLength]
 RandomizedQueue.java:12: Line is longer than 128 characters (currently 606). [LineLength]
 RandomizedQueue.java:14: Line is longer than 128 characters (currently 633). [LineLength]
-Checkstyle ends with 12 errors.
+Checkstyle ends with 15 errors.
 
 ================================================================
 
@@ -248,34 +251,9 @@ Test 6: Calls to addFirst(), addLast(), removeFirst(),
   * 1000 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
   *    5 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
   *   50 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
-    - failed on operation 11 of 50
-    - student   removeLast() returned 6
-    - reference removeLast() returned 10
-    - sequence of dequeue operations was:
-         deque.isEmpty()
-         deque.size()
-         deque.isEmpty()
-         deque.size()
-         deque.addFirst(4)
-         deque.removeLast()      ==> 4
-         deque.addFirst(6)
-         deque.addLast(7)
-         deque.removeFirst()     ==> 6
-         deque.removeLast()      ==> 7
-         deque.addFirst(10)
-         deque.removeLast()      ==> 6
-
   *  500 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
-    - failed on operation 62 of 500
-    - student   removeFirst() returned 57
-    - reference removeFirst() returned 61
-
   * 1000 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
-    - failed on operation 102 of 1000
-    - student   removeLast() returned 87
-    - reference removeLast() returned 101
-
-==> FAILED
+==> passed
 
 Test 7: Removing from an empty deque
   * removeFirst()
@@ -316,7 +294,7 @@ Test 16: Check iterator() when Deque is empty
 ==> passed
 
 
-Total: 15/16 tests passed!
+Total: 16/16 tests passed!
 
 
 ================================================================
@@ -378,21 +356,21 @@ Test 6: create multiple randomized queue objects at the same time
 
 Test 7: check that iterator() returns correct items after a sequence of
         enqueue() operations
-    - student   solution has 24 null entries
+    - student   solution has 23 null entries
     - reference solution has 0 null entries
-    - student   solution has 976 non-null entries
+    - student   solution has 977 non-null entries
     - reference solution has 1000 non-null entries
-    - 24 missing entries in student solution, including: 767
+    - 23 missing entries in student solution, including: 998
 
 ==> FAILED
 
 Test 8: check that iterator() returns correct items after sequence of enqueue()
         and dequeue() operations
-    - student   solution has 10 null entries
+    - student   solution has 3 null entries
     - reference solution has 0 null entries
-    - student   solution has 525 non-null entries
-    - reference solution has 535 non-null entries
-    - 10 missing entries in student solution, including: 998
+    - student   solution has 520 non-null entries
+    - reference solution has 523 non-null entries
+    - 3 missing entries in student solution, including: 1000
 
 ==> FAILED
 
@@ -429,13 +407,13 @@ Test 11: create two iterators over different randomized queues
     - reference solution has 0 null entries
     - student   solution has 6 non-null entries
     - reference solution has 10 non-null entries
-    - 4 missing entries in student solution, including: 8
+    - 4 missing entries in student solution, including: 7
 
-    - student   solution has 2 null entries
+    - student   solution has 3 null entries
     - reference solution has 0 null entries
-    - student   solution has 8 non-null entries
+    - student   solution has 7 non-null entries
     - reference solution has 10 non-null entries
-    - 2 missing entries in student solution, including: 5
+    - 3 missing entries in student solution, including: 3
 
 ==> FAILED
 
@@ -497,37 +475,37 @@ Running 9 total tests.
 
 Test 1a: check formatting for sample inputs from assignment specification
   % java Permutation 3 < distinct.txt
+  G
   F
-  C
-  B
+  A
 
   % java Permutation 3 < distinct.txt
-  I
-  H
-  C
+  E
+  F
+  G
 
   % java Permutation 8 < duplicates.txt
   BB
+  CC
   AA
   BB
-  BB
-  BB
-  BB
   CC
-  CC
+  BB
+  BB
+  BB
 
 ==> passed
 
 Test 1b: check formatting for other inputs
   % java Permutation 8 < mediumTale.txt
-  of
-  was
   the
   was
-  worst
-  of
+  the
+  times
   it
-  of
+  was
+  foolishness
+  wisdom
 
   % java Permutation 0 < distinct.txt
   [no output]
@@ -691,14 +669,14 @@ Test 3a-3e: Total memory usage after inserting 2n+1 items
 
                  n        bytes
 ----------------------------------------------------------
-=> FAILED        8          856   (1.4x)
-=> FAILED       64         6232   (1.9x)
-=> FAILED      256        24664   (2.0x)
-=> FAILED     1024        98392   (2.0x)
-=> FAILED     4096       393304   (2.0x)
-==> 0/5 tests passed
+=> passed        8          472
+=> passed       64         3160
+=> passed      256        12376
+=> passed     1024        49240
+=> passed     4096       196696
+==> 5/5 tests passed
 
-Memory: 96.00 n + -8.00   (R^2 = 1.000)
+Memory: 48.00 n + 40.00   (R^2 = 1.000)
 
 
 
@@ -708,14 +686,14 @@ Test 4a-4e: Total memory usage after inserting n items and then
 
                  n        bytes
 ----------------------------------------------------------
-=> FAILED        8          424   (1.8x)
-=> FAILED       64         3112  (13.0x)
-=> FAILED      256        12328  (51.4x)
-=> FAILED     1024        49192 (205.0x)
-=> FAILED     4096       196648 (819.4x)
-==> 0/5 tests passed
+=> passed        8           88
+=> passed       64           88
+=> passed      256           88
+=> passed     1024           88
+=> passed     4096           88
+==> 5/5 tests passed
 
-Memory after adding n = 2^i items: 71498.91   (R^2 = 0.000)
+Memory after adding n = 2^i items: 88.00   (R^2 = 1.000)
 
 
 
@@ -740,77 +718,32 @@ Test 6a: Insert n strings; delete them one at a time, checking for
          and addLast() are (p1, p2), respectively. The probabilities of
          removeFirst() and removeLast() are (q1, q2), respectively
   * 100 random insertions (1.0, 0.0) and 100 random deletions (1.0, 0.0)
-    - loitering observed during 99 of 100 deletions
-    - maximum number of loitered objects at one time = 99
   * 100 random insertions (1.0, 0.0) and 100 random deletions (0.0, 1.0)
   * 100 random insertions (0.0, 1.0) and 100 random deletions (1.0, 0.0)
-    - loitering observed during 99 of 100 deletions
-    - maximum number of loitered objects at one time = 99
   * 100 random insertions (0.0, 1.0) and 100 random deletions (0.0, 1.0)
   * 100 random insertions (0.5, 0.5) and 100 random deletions (0.5, 0.5)
-    - loitering observed during 100 of 100 deletions
-    - maximum number of loitered objects at one time = 51
-==> FAILED
+==> passed
 
 Test 6b: Perform random operations, checking for loitering after
          each operation. The probabilities of addFirst(), addLast(),
          removeFirst(), and removeLast() are (p1, p2, p3, p4),
          respectively.
   * 100 random operations (0.8, 0.0, 0.2, 0.0)
-    - loitering detected after operation 8 of 100
-    - sequence of operations:
-         deque.addFirst("JZBEPMRZTV")
-         deque.addFirst("VOPHONUFVJ")
-         deque.addFirst("ICEQOPZBQW")
-         deque.addFirst("WXGQBOSBKJ")
-         deque.addFirst("PBTXFFEJWN")
-         deque.addFirst("ZTLFAZFOSL")
-         deque.addFirst("JDCLTPVOLY")
-         deque.removeFirst()     ==> JDCLTPVOLY
-    - loitered object(s):
-      JDCLTPVOLY
-
   * 100 random operations (0.8, 0.0, 0.0, 0.2)
   * 100 random operations (0.0, 0.8, 0.2, 0.0)
-    - loitering detected after operation 5 of 100
-    - sequence of operations:
-         deque.addLast("EMNVAIICXH")
-         deque.removeFirst()     ==> EMNVAIICXH
-         deque.addLast("DOTVBWUSAQ")
-         deque.addLast("WMHCKALQDN")
-         deque.removeFirst()     ==> DOTVBWUSAQ
-    - loitered object(s):
-      DOTVBWUSAQ
-
   * 100 random operations (0.0, 0.8, 0.0, 0.2)
   * 100 random operations (0.4, 0.4, 0.1, 0.1)
-    - loitering detected after operation 13 of 100
   * 100 random operations (0.2, 0.2, 0.3, 0.3)
-    - loitering detected after operation 5 of 100
-    - sequence of operations:
-         deque.addLast("HRHLIHUDPM")
-         deque.removeFirst()     ==> HRHLIHUDPM
-         deque.addLast("VMGOIMMOUJ")
-         deque.addLast("ZBTITMYAUY")
-         deque.removeFirst()     ==> VMGOIMMOUJ
-    - loitered object(s):
-      VMGOIMMOUJ
-
-==> FAILED
+==> passed
 
 Test 7: Worst-case constant memory allocated or deallocated
         per deque operation?
   * 128 random operations
-    - failed on trial 83 of 128
-    - when current size of Deque was 43 objects;
-    - the call to addFirst()
-    - caused a change in memory of -144 bytes
-    - any change of more than 96 bytes fails the test
   * 256 random operations
   * 512 random operations
-==> FAILED
+==> passed
 
-Total: 15/28 tests passed!
+Total: 28/28 tests passed!
 
 ================================================================
 
@@ -858,7 +791,84 @@ Test 3a-3d: Total memory usage after inserting 2n+1 items, and
 
                  n        bytes
 ----------------------------------------------------------
-=> passed
+=> passed       64         2104
+=> passed      256         8248
+=> passed     1024        32824
+=> passed     4096       131128
+==> 4/4 tests passed
+
+
+Memory: 32.00 n + 24.00   (R^2 = 1.000)
+
+
+
+Test 4a-4d: Total memory usage after inserting n items, and
+            then deleting all but one item.
+
+                 n        bytes
+----------------------------------------------------------
+=> FAILED       64          568   (2.4x)
+=> FAILED      256         2104   (8.8x)
+=> FAILED     1024         8248  (34.4x)
+=> FAILED     4096        32824 (136.8x)
+==> 0/4 tests passed
+
+
+Memory: 11965.82   (R^2 = 0.000)
+
+
+
+Test 5a-5d: Total memory usage of iterator after inserting n items.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed       64           40
+=> passed      256           40
+=> passed     1024           40
+=> passed     4096           40
+==> 4/4 tests passed
+
+
+Memory: 40.00   (R^2 = 1.000)
+
+
+
+Test 6a: Insert 100 strings; delete them one at a time, checking
+         for loitering after each deletion.
+==> passed
+
+Test 6b: Perform random operations, checking for loitering after
+         each operation. The probabilities of enqueue(), dequeue(),
+         and sample() are (p1, p2, p3), respectively.
+  * 200 random operations (0.8, 0.2, 0.0)
+  * 200 random operations (0.2, 0.8, 0.0)
+  * 200 random operations (0.6, 0.2, 0.2)
+  * 200 random operations (0.2, 0.4, 0.4)
+==> passed
+
+Test 7: Insert T items into queue; then iterate over queue and check
+        that worst-case constant memory is allocated or deallocated
+        per iterator operation.
+  * T = 64
+  * T = 128
+  * T = 256
+==> passed
+
+Total: 19/23 tests passed!
+
+================================================================
+
+
+
+********************************************************************************
+*  TIMING
+********************************************************************************
+
+Timing Deque
+*-----------------------------------------------------------
+Running 55 total tests.
+
+Test 1a-1g:  n random calls to addFirst(), r
 
 ...
 
