@@ -12,10 +12,6 @@ import static junit.framework.TestCase.assertEquals;
  * Created by Maksym Pavlov on 4/10/17.
  */
 public class PointTest {
-    @Test
-    public void slopeToHorizontal() {
-        assertEquals(0.0, new Point(0, 0).slopeTo(new Point(1, 0)));
-    }
 
     @Test
     public void slopeToPositive() {
@@ -25,6 +21,21 @@ public class PointTest {
     @Test
     public void slopeToNegative() {
         assertEquals(-0.5, new Point(1, 2).slopeTo(new Point(3, 1)));
+    }
+
+    @Test
+    public void slopeToPositiveZero() {
+        assertEquals(+0.0, new Point(0, 0).slopeTo(new Point(3, 0)));
+    }
+
+    @Test
+    public void slopeToNegativeInfIfPointsEqual() {
+        assertEquals(Double.NEGATIVE_INFINITY, new Point(0, 0).slopeTo(new Point(0, 0)));
+    }
+
+    @Test
+    public void slopeToPositiveInfIfVertical() {
+        assertEquals(Double.POSITIVE_INFINITY, new Point(0, 0).slopeTo(new Point(0, 5)));
     }
 
     @Test

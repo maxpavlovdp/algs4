@@ -19,10 +19,10 @@ public class LineSegment {
     /**
      * Initializes a new line segment.
      *
-     * @param  p one endpoint
-     * @param  q the other endpoint
+     * @param p one endpoint
+     * @param q the other endpoint
      * @throws NullPointerException if either <tt>p</tt> or <tt>q</tt>
-     *         is <tt>null</tt>
+     *                              is <tt>null</tt>
      */
     public LineSegment(Point p, Point q) {
         if (p == null || q == null) {
@@ -30,6 +30,13 @@ public class LineSegment {
         }
         this.p = p;
         this.q = q;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        LineSegment that = (LineSegment) o;
+        return that.p.compareTo(this.p) == 0 &&
+                that.q.compareTo(this.q) == 0;
     }
 
 
