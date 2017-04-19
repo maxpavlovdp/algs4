@@ -32,14 +32,6 @@ public class LineSegment {
         this.q = q;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        LineSegment that = (LineSegment) o;
-        return that.p.compareTo(this.p) == 0 &&
-                that.q.compareTo(this.q) == 0;
-    }
-
-
     /**
      * Draws this line segment to standard draw.
      */
