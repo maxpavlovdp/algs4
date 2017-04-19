@@ -2,7 +2,6 @@ package edu.hometasks.ht3Mergesort;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
-import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.ArrayList;
@@ -55,6 +54,8 @@ public class BruteCollinearPoints {
     }
 
     public static void main(String[] args) {
+        if (args[0] == null) throw new NullPointerException();
+
         // read the n points from a file
         In in = new In(args[0]);
         int n = in.readInt();

@@ -1,4 +1,5 @@
-package edu.hometasks.ht3Mergesort; /******************************************************************************
+package edu.hometasks.ht3Mergesort;
+/******************************************************************************
  *  Compilation:  javac Point.java
  *  Execution:    java Point
  *  Dependencies: none
@@ -69,7 +70,7 @@ public class Point implements Comparable<Point> {
      * @return the slope between this point and the specified point
      */
     public double slopeTo(Point that) {
-        if(this.x == that.x && this.y == that.y) return Double.NEGATIVE_INFINITY;
+        if (this.x == that.x && this.y == that.y) return Double.NEGATIVE_INFINITY;
 //        if(this.x == that.x) return Double.POSITIVE_INFINITY;
         return (double) (that.y - this.y) / (double) (that.x - this.x);
     }
