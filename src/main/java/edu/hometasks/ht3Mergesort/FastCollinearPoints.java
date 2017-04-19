@@ -17,6 +17,8 @@ public class FastCollinearPoints {
 
     // finds all line segments containing 4 or more points
     public FastCollinearPoints(Point[] points) {
+        performValidation(points);
+
         Arrays.sort(points);
 
         Point[] sortedAgainstPoint = Arrays.copyOf(points, points.length);
@@ -61,6 +63,15 @@ public class FastCollinearPoints {
 //        System.out.println(segments);
     }
 
+    private void performValidation(Point[] points) {
+        if (points == null) throw new NullPointerException();
+        for (int i = 0; i < points.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (points[j].compareTo(points[i]) == 0) throw new IllegalArgumentException();
+            }
+        }
+    }
+
     // the number of line segments
     public int numberOfSegments() {
         return segments.size();
@@ -73,8 +84,6 @@ public class FastCollinearPoints {
 
     public static void main(String[] args) {
         // read the n points from a file
-        if (args[0] == null) throw new NullPointerException();
-
         In in = new In(args[0]);
         int n = in.readInt();
         Point[] points = new Point[n];

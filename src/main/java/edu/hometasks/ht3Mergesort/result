@@ -5,23 +5,23 @@ ASSESSMENT SUMMARY
 Compilation:  PASSED
 API:          PASSED
 
-Findbugs:     FAILED (4 warnings)
-Checkstyle:   FAILED (2 warnings)
+Findbugs:     FAILED (2 warnings)
+Checkstyle:   FAILED (3 warnings)
 
-Correctness:  22/41 tests passed
+Correctness:  26/41 tests passed
 Memory:       1/1 tests passed
 Timing:       39/41 tests passed
 
-Aggregate score: 71.22%
+Aggregate score: 77.07%
 [Compilation: 5%, API: 5%, Findbugs: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
 
 ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
-2.7K Apr 19 11:36 BruteCollinearPoints.java
-3.3K Apr 19 11:36 FastCollinearPoints.java
-4.0K Apr 19 11:36 Point.java
+3.0K Apr 19 15:53 BruteCollinearPoints.java
+3.7K Apr 19 15:53 FastCollinearPoints.java
+4.1K Apr 19 15:53 Point.java
 
 
 ********************************************************************************
@@ -60,20 +60,19 @@ FastCollinearPoints:
 
 % findbugs *.class
 *-----------------------------------------------------------
-M V EI_EXPOSE_REP2 EI2: Stores a reference to an externally mutable object in the instance variable 'points', exposing the internal representation of the class 'BruteCollinearPoints'. Instead, create a defensive copy of the object referenced by the parameter variable 'points' and store that copy in the instance variable 'points'.   At BruteCollinearPoints.java:[line 19]
-L D FE_FLOATING_POINT_EQUALITY FE: Tests for exact floating-point equality. Because floating-point calculations may involve rounding, the calculated values may be imprecise.  At BruteCollinearPoints.java:[line 32]
-L D FE_FLOATING_POINT_EQUALITY FE: Tests for exact floating-point equality. Because floating-point calculations may involve rounding, the calculated values may be imprecise.  At FastCollinearPoints.java:[line 33]
-L P URF_UNREAD_FIELD UrF: The instance (or static) variable 'points' is never read. Consider removing it from the class.  At BruteCollinearPoints.java:[line 19]
-Warnings generated: 4
+L D FE_FLOATING_POINT_EQUALITY FE: Tests for exact floating-point equality. Because floating-point calculations may involve rounding, the calculated values may be imprecise.  At BruteCollinearPoints.java:[line 29]
+L D FE_FLOATING_POINT_EQUALITY FE: Tests for exact floating-point equality. Because floating-point calculations may involve rounding, the calculated values may be imprecise.  At FastCollinearPoints.java:[line 35]
+Warnings generated: 2
 
 ================================================================
 
 
 % checkstyle *.java
 *-----------------------------------------------------------
-BruteCollinearPoints.java:4:8: Unused import statement for 'edu.princeton.cs.algs4.StdIn'. [UnusedImports]
-FastCollinearPoints.java:33: Line is longer than 128 characters (currently 142). [LineLength]
-Checkstyle ends with 2 errors.
+BruteCollinearPoints.java:6: Do not use .* in import statements. [AvoidStarImport]
+BruteCollinearPoints.java:62:44: Do not use the keyword 'throws' in this course. [IllegalToken]
+FastCollinearPoints.java:35: Line is longer than 128 characters (currently 142). [LineLength]
+Checkstyle ends with 3 errors.
 
 ================================================================
 
@@ -88,61 +87,20 @@ Running 3 total tests.
 
 Test 1: p.slopeTo(q)
   * positive infinite slope, where p and q have coordinates in [0, 500)
-     Failed on trial 2 of 100000
-     p             = (417, 83)
-     q             = (417, 82)
-     p.slopeTo(q)  = -Infinity
   * positive infinite slope, where p and q have coordinates in [0, 32768)
-     Failed on trial 2 of 100000
-     p             = (5215, 31720)
-     q             = (5215, 10281)
-     p.slopeTo(q)  = -Infinity
   * negative infinite slope, where p and q have coordinates in [0, 500)
   * negative infinite slope, where p and q have coordinates in [0, 32768)
   * positive zero     slope, where p and q have coordinates in [0, 500)
-     Failed on trial 1 of 100000
-     p             = (339, 102)
-     q             = (256, 102)
-     p.slopeTo(q)  = -0.0
   * positive zero     slope, where p and q have coordinates in [0, 32768)
-     Failed on trial 4 of 100000
-     p             = (5311, 23744)
-     q             = (2071, 23744)
-     p.slopeTo(q)  = -0.0
   * symmetric for random points p and q with coordinates in [0, 500)
-     Failed on trial 290 of 100000
-     p               = (400, 221)
-     q               = (400, 314)
-     p.slopeTo(q)  = Infinity
-     q.slopeTo(p)  = -Infinity
   * symmetric for random points p and q with coordinates in [0, 32768)
-     Failed on trial 32933 of 100000
-     p               = (13605, 10770)
-     q               = (13605, 25746)
-     p.slopeTo(q)  = Infinity
-     q.slopeTo(p)  = -Infinity
   * transitive for random points p, q, and r with coordinates in [0, 500)
   * transitive for random points p, q, and r with coordinates in [0, 32768)
   * slopeTo(), where p and q have coordinates in [0, 500)
-     Failed on trial 38 of 100000
-     p                        = (282, 422)
-     q                        = (282, 141)
-     student   p.slopeTo(q) = -Infinity
-     reference p.slopeTo(q) = Infinity
   * slopeTo(), where p and q have coordinates in [0, 32768)
-     Failed on trial 36903 of 100000
-     p                        = (23345, 18239)
-     q                        = (23345, 13481)
-     student   p.slopeTo(q) = -Infinity
-     reference p.slopeTo(q) = Infinity
   * slopeTo(), where p and q have coordinates in [0, 10)
-     Failed on trial 9 of 100000
-     p                        = (7, 6)
-     q                        = (7, 1)
-     student   p.slopeTo(q) = -Infinity
-     reference p.slopeTo(q) = Infinity
   * throw a java.lang.NullPointerException if argument is null
-==> FAILED
+==> passed
 
 Test 2: p.compareTo(q)
   * reflexive, where p and q have coordinates in [0, 500)
@@ -165,37 +123,13 @@ Test 3: p.slopeOrder().compare(q, r)
   * transitive, where p, q, r, and s have coordinates in [0, 500)
   * transitive, where p, q, r, and s have coordinates in [0, 32768)
   * sign of compare(), where p, q, and r have coordinates in [0, 500)
-     Failed on trial 341 of 100000
-     p                         = (305, 405)
-     q                         = (150, 79)
-     r                         = (305, 125)
-     student   p.compare(q, r) = 1
-     reference p.compare(q, r) = -1
-     reference p.slopeTo(q)    = 2.1032258064516127
-     reference p.slopeTo(r)    = Infinity
   * sign of compare(), where p, q, and r have coordinates in [0, 32768)
-     Failed on trial 22768 of 100000
-     p                         = (23883, 26226)
-     q                         = (15034, 14082)
-     r                         = (23883, 1873)
-     student   p.compare(q, r) = 1
-     reference p.compare(q, r) = -1
-     reference p.slopeTo(q)    = 1.3723584585828907
-     reference p.slopeTo(r)    = Infinity
   * sign of compare(), where p, q, and r have coordinates in [0, 10)
-     Failed on trial 6 of 100000
-     p                         = (6, 5)
-     q                         = (6, 4)
-     r                         = (3, 6)
-     student   p.compare(q, r) = -1
-     reference p.compare(q, r) = 1
-     reference p.slopeTo(q)    = Infinity
-     reference p.slopeTo(r)    = -0.3333333333333333
   * throw java.lang.NullPointerException if either argument is null
-==> FAILED
+==> passed
 
 
-Total: 1/3 tests passed!
+Total: 3/3 tests passed!
 
 
 ================================================================
@@ -386,51 +320,15 @@ Test 13: Throws exception either if argument to constructor is null
 
 Test 14: Check that the constructor throws an exception if duplicate points
   * 50 points
-    - failed on trial 1 of 5
-    - does not throw a java.lang.IllegalArgumentException
-
   * 25 points
-    - failed on trial 1 of 10
-    - does not throw a java.lang.IllegalArgumentException
-
   * 5 points
-    - failed on trial 1 of 100
-    - does not throw a java.lang.IllegalArgumentException
-     5
-     21063 26173
-     23246 21195
-     16471  6537
-     16471  6537
-     19048 18764
-
   * 4 points
-    - failed on trial 1 of 100
-    - does not throw a java.lang.IllegalArgumentException
-     4
-     29688 15272
-     20186 13479
-     15505 32570
-     29688 15272
-
   * 3 points
-    - failed on trial 1 of 100
-    - does not throw a java.lang.IllegalArgumentException
-     3
-     12487  4036
-     19179  2172
-     19179  2172
-
   * 2 points
-    - failed on trial 1 of 100
-    - does not throw a java.lang.IllegalArgumentException
-     2
-      7543 14658
-      7543 14658
-
-==> FAILED
+==> passed
 
 
-Total: 11/17 tests passed!
+Total: 12/17 tests passed!
 
 
 ================================================================
@@ -627,41 +525,48 @@ Test 9: Random line segments, none vertical or horizontal
   * 25 random line segments
     - student   solution has 24 non-null entries
     - reference solution has 25 non-null entries
-    - 1 missing entry in student solution: (7760, 9513) -> (8556, 9810) -> (9352, 10107) -> (14924, 12186)
+    - 1 missing entry in student solution: (1407, 316) -> (6297, 9846) -> (9720, 16517) -> (10209, 17470)
 
 
-    - failed on trial 38 of 100
+    - failed on trial 100 of 100
 
   * 50 random line segments
   * 100 random line segments
+    - student   solution has 99 non-null entries
+    - reference solution has 100 non-null entries
+    - 1 missing entry in student solution: (2595, 4409) -> (2992, 4955) -> (4977, 7685) -> (5771, 8777)
+
+
+    - failed on trial 2 of 2
+
 ==> FAILED
 
 Test 10: Random line segments
   *  1 random line segment
   *  5 random line segments
   * 25 random line segments
-    - student   solution has 24 non-null entries
+    - student   solution has 23 non-null entries
     - reference solution has 25 non-null entries
-    - 1 missing entry in student solution: (7980, 3256) -> (9940, 5636) -> (10836, 6724) -> (13132, 9512)
+    - 2 missing entries in student solution, including: (6833, 7428) -> (9385, 11140) -> (10485, 12740) -> (10529, 12804)
 
 
-    - failed on trial 28 of 100
+    - failed on trial 68 of 100
 
   * 50 random line segments
-    - student   solution has 48 non-null entries
+    - student   solution has 49 non-null entries
     - reference solution has 50 non-null entries
-    - 2 missing entries in student solution, including: (6559, 6348) -> (8255, 8140) -> (9156, 9092) -> (11329, 11388)
+    - 1 missing entry in student solution: (9255, 5758) -> (9489, 7864) -> (9498, 7945) -> (9651, 9322)
 
 
-    - failed on trial 4 of 15
+    - failed on trial 11 of 15
 
   * 100 random line segments
-    - student   solution has 99 non-null entries
+    - student   solution has 98 non-null entries
     - reference solution has 100 non-null entries
-    - 1 missing entry in student solution: (10655, 11307) -> (10655, 11406) -> (10655, 12231) -> (10655, 12693)
+    - 2 missing entries in student solution, including: (7796, 4473) -> (8214, 6107) -> (8346, 6623) -> (8533, 7354)
 
 
-    - failed on trial 1 of 2
+    - failed on trial 2 of 2
 
 ==> FAILED
 
@@ -670,42 +575,42 @@ Test 11: Random distinct points in a given range
   * 10 random points in a 10-by-10 grid
     - student   solution has 0 non-null entries
     - reference solution has 1 non-null entries
-    - 1 missing entry in student solution: (0, 7) -> (1, 7) -> (2, 7) -> (9, 7)
+    - 1 missing entry in student solution: (5, 4) -> (6, 5) -> (8, 7) -> (9, 8)
 
 
-    - failed on trial 73 of 500
+    - failed on trial 13 of 500
      10
-         7     0
-         0     7
+         3     3
+         9     4
+         9     8
+         5     4
+         1     2
+         8     7
+         8     1
+         5     8
          6     5
-         1     7
-         9     5
-         8     5
-         5     0
-         2     7
-         3     6
-         9     7
+         3     7
 
   * 50 random points in a 10-by-10 grid
-    - student   solution has 9 non-null entries
-    - reference solution has 41 non-null entries
-    - 32 missing entries in student solution, including: (0, 9) -> (1, 9) -> (2, 9) -> (3, 9) -> (4, 9) -> (7, 9) -> (8, 9)
+    - student   solution has 3 non-null entries
+    - reference solution has 44 non-null entries
+    - 41 missing entries in student solution, including: (2, 9) -> (5, 9) -> (6, 9) -> (7, 9)
 
 
     - failed on trial 1 of 100
 
   * 90 random points in a 10-by-10 grid
-    - student   solution has 5 non-null entries
-    - reference solution has 127 non-null entries
-    - 122 missing entries in student solution, including: (0, 9) -> (1, 9) -> (3, 9) -> (4, 9) -> (5, 9) -> (6, 9) -> (7, 9) -> (8, 9) -> (9, 9)
+    - student   solution has 6 non-null entries
+    - reference solution has 113 non-null entries
+    - 107 missing entries in student solution, including: (0, 9) -> (1, 9) -> (2, 9) -> (4, 9) -> (5, 9) -> (6, 9) -> (7, 9) -> (8, 9) -> (9, 9)
 
 
     - failed on trial 1 of 50
 
   * 200 random points in a 50-by-50 grid
-    - student   solution has 6 non-null entries
-    - reference solution has 203 non-null entries
-    - 197 missing entries in student solution, including: (3, 49) -> (26, 49) -> (33, 49) -> (35, 49) -> (38, 49)
+    - student   solution has 7 non-null entries
+    - reference solution has 222 non-null entries
+    - 215 missing entries in student solution, including: (15, 49) -> (22, 49) -> (33, 49) -> (34, 49) -> (48, 49) -> (49, 49)
 
 
     - failed on trial 1 of 10
@@ -808,57 +713,108 @@ Test 16: Throws exception either if argument to constructor is null
 
 Test 17: Check that the constructor throws an exception if duplicate points
   * 50 points
-    - failed on trial 1 of 5
-    - does not throw a java.lang.IllegalArgumentException
-
   * 25 points
-    - failed on trial 1 of 10
-    - does not throw a java.lang.IllegalArgumentException
-
   * 5 points
-    - failed on trial 1 of 100
-    - does not throw a java.lang.IllegalArgumentException
-     5
-      9184  2334
-     20991 29067
-      2991 19971
-     20991 29067
-      5200  7727
-
   * 4 points
-    - failed on trial 1 of 100
-    - does not throw a java.lang.IllegalArgumentException
-     4
-     28053 25920
-     28053 25920
-     31867 23278
-     32284 22740
-
   * 3 points
-    - failed on trial 1 of 100
-    - does not throw a java.lang.IllegalArgumentException
-     3
-      7378 14697
-      9924 20563
-      9924 20563
-
   * 2 points
-    - failed on trial 1 of 100
-    - does not throw a java.lang.IllegalArgumentException
-     2
-     23069 12484
-     23069 12484
-
-==> FAILED
+==> passed
 
 
-Total: 10/21 tests passed!
+Total: 11/21 tests passed!
 
 
 ================================================================
 ********************************************************************************
 *  MEMORY
-*****
+********************************************************************************
+
+Computing memory of Point
+*-----------------------------------------------------------
+Running 1 total tests.
+
+The maximum amount of memory per Point object is 32 bytes.
+
+Student memory = 24 bytes (passed)
+
+Total: 1/1 tests passed!
+
+================================================================
+
+
+
+********************************************************************************
+*  TIMING
+********************************************************************************
+
+Timing BruteCollinearPoints
+*-----------------------------------------------------------
+Running 10 total tests.
+
+Test 1a-1e: Find collinear points among n random distinct points
+
+
+                                                      slopeTo()
+             n    time     slopeTo()   compare()  + 2*compare()        compareTo()
+-----------------------------------------------------------------------------------------------
+=> passed    16   0.03      196608           0         196608               105336
+=> passed    32   0.04     3145728           0        3145728              1715696
+=> passed    64   0.41    50331648           0       50331648             27703264
+=> passed   128   4.66   805306368           0      805306368            445308864
+=> passed   256  47.05 12884901888           0    12884901888           7141556096
+Aborting: time limit of 10 seconds exceeded
+Test 2a-2e: Find collinear points among n/4 arbitrary line segments
+
+
+                                                      slopeTo()
+             n    time     slopeTo()   compare()  + 2*compare()        compareTo()
+-----------------------------------------------------------------------------------------------
+=> passed    16   0.00      196608           0         196608               105336
+=> passed    32   0.02     3145728           0        3145728              1715696
+=> passed    64   0.25    50331648           0       50331648             27703264
+=> passed   128   4.05   805306368           0      805306368            445308864
+=> passed   256  66.86 12884901888           0    12884901888           7141556096
+Aborting: time limit of 10 seconds exceeded
+Total: 8/10 tests passed!
+
+
+================================================================
+
+
+
+Timing FastCollinearPoints
+*-----------------------------------------------------------
+Running 31 total tests.
+
+Test 1a-1g: Find collinear points among n random distinct points
+
+
+                                                      slopeTo()
+             n    time     slopeTo()   compare()  + 2*compare()        compareTo()
+-----------------------------------------------------------------------------------------------
+=> passed    64   0.02        7936       17542          43020                 2448
+=> passed   128   0.02       32256       83519         199294                 9122
+=> passed   256   0.04      130048      385369         900786                34889
+=> passed   512   0.14      522240     1756569        4035378               135813
+=> passed  1024   0.30     2093056     7963783       18020622               534778
+=> passed  2048   0.85     8380416    35468333       79317082              2120207
+==> 6/6 tests passed
+
+lg ratio(slopeTo() + 2*compare()) = lg (79317082 / 18020622) = 2.14
+=> passed
+
+==> 7/7 tests passed
+
+Test 2a-2g: Find collinear points among the n points on an n-by-1 grid
+
+                                                      slopeTo()
+             n    time     slopeTo()   compare()  + 2*compare()        compareTo()
+-----------------------------------------------------------------------------------------------
+=> passed    64   0.00        7936        4764          17464                 8258
+=> passed   128   0.00       32256       17796          67848                27866
+=> passed   256   0.01      130048       68717         267482               104323
+=> passed   512   0.02      522240      269399        1061038               405465
+=> passed  1024   0.06     2093056     1065026
 
 ...
 

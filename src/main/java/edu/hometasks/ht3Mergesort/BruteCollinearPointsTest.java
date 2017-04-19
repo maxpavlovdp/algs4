@@ -31,4 +31,13 @@ public class BruteCollinearPointsTest {
     public void numSegments() {
         assertEquals(2, bcp.numberOfSegments());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void noDuplicatedPoints() {
+        Point[] points = new Point[2];
+        points[0] = new Point(1, 1);
+        points[1] = new Point(1, 1);
+
+        new BruteCollinearPoints(points);
+    }
 }

@@ -4,19 +4,17 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Maksym Pavlov on 4/10/17.
  */
 public class BruteCollinearPoints {
-    private final Point[] points;
     private List<LineSegment> segments = new ArrayList<>();
 
     // finds all line segments containing 4 points
     public BruteCollinearPoints(Point[] points) {
-        this.points = points;
+        performValidation(points);
 
         for (int p = 0; p < points.length; p++) {
             for (int q = 0; q < points.length; q++) {
@@ -43,6 +41,15 @@ public class BruteCollinearPoints {
         }
     }
 
+    private void performValidation(Point[] points) {
+        if (points == null) throw new NullPointerException();
+        for (int i = 0; i < points.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (points[j].compareTo(points[i]) == 0) throw new IllegalArgumentException();
+            }
+        }
+    }
+
     // the number of line segments
     public int numberOfSegments() {
         return segments.size();
@@ -53,9 +60,7 @@ public class BruteCollinearPoints {
         return segments.toArray(new LineSegment[segments.size()]);
     }
 
-    public static void main(String[] args) {
-        if (args[0] == null) throw new NullPointerException();
-
+    public static void main(String[] args) throws IllegalAccessException {
         // read the n points from a file
         In in = new In(args[0]);
         int n = in.readInt();

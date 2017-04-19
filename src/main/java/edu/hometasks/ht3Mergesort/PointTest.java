@@ -53,4 +53,14 @@ public class PointTest {
         points.sort(p0.slopeOrder());
         assertEquals(p1, points.get(1));
     }
+
+    @Test
+    public void positiveInfSlope() {
+        assertEquals(Double.POSITIVE_INFINITY, new Point(282, 422).slopeTo(new Point(282, 141)));
+    }
+
+    @Test
+    public void pozitiveZero() {
+        assertEquals(0.0, new Point(290, 3).slopeTo(new Point(88, 3)));
+    }
 }

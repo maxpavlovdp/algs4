@@ -70,8 +70,11 @@ public class Point implements Comparable<Point> {
      * @return the slope between this point and the specified point
      */
     public double slopeTo(Point that) {
+        if (that == null) throw new NullPointerException();
         if (this.x == that.x && this.y == that.y) return Double.NEGATIVE_INFINITY;
-//        if(this.x == that.x) return Double.POSITIVE_INFINITY;
+        if (this.x == that.x) return Double.POSITIVE_INFINITY;
+        if (this.y == that.y) return 0;
+
         return (double) (that.y - this.y) / (double) (that.x - this.x);
     }
 
