@@ -19,12 +19,13 @@ public class FastCollinearPoints {
     public FastCollinearPoints(Point[] points) {
         performValidation(points);
 
-        Arrays.sort(points);
+        Point[] sortedPoints = Arrays.copyOf(points, points.length);
+        Arrays.sort(sortedPoints);
 
-        Point[] sortedAgainstPoint = Arrays.copyOf(points, points.length);
+        Point[] sortedAgainstPoint = Arrays.copyOf(sortedPoints, sortedPoints.length);
 
-        for (int i = 0; i < points.length; i++) {
-            Point basePoint = points[i];
+        for (int i = 0; i < sortedPoints.length; i++) {
+            Point basePoint = sortedPoints[i];
             Arrays.sort(sortedAgainstPoint, basePoint.slopeOrder());
 
             List<Point> line = new ArrayList<Point>();

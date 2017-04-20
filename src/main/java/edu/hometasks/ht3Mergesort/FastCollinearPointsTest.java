@@ -165,7 +165,7 @@ public class FastCollinearPointsTest {
     }
 
     @Test
-    public void checkinput40() {
+    public void checkInput40() {
         In in = new In("/Users/Max_account/IdeaProjects/edu/algs4/src/main/java/edu/hometasks/ht3Mergesort/testCollinear/input40.txt");
         int n = in.readInt();
         Point[] points = new Point[n];
@@ -179,18 +179,33 @@ public class FastCollinearPointsTest {
         assertEquals(4, new FastCollinearPoints(points).numberOfSegments());
     }
 
-//    @Test
-//    public void checkinput40() {
-//        In in = new In("/Users/Max_account/IdeaProjects/edu/algs4/src/main/java/edu/hometasks/ht3Mergesort/testCollinear/equidistant.txt");
-//        int n = in.readInt();
-//        Point[] points = new Point[n];
-//        for (int i = 0; i < n; i++) {
-//            int x = in.readInt();
-//            int y = in.readInt();
-//            points[i] = new Point(x, y);
-//        }
-//
-//
-//        assertEquals(4, new FastCollinearPoints(points).numberOfSegments());
-//    }
+    @Test
+    public void checkEquidistant() {
+        In in = new In("/Users/Max_account/IdeaProjects/edu/algs4/src/main/java/edu/hometasks/ht3Mergesort/testCollinear/equidistant.txt");
+        int n = in.readInt();
+        Point[] points = new Point[n];
+        for (int i = 0; i < n; i++) {
+            int x = in.readInt();
+            int y = in.readInt();
+            points[i] = new Point(x, y);
+        }
+
+
+        assertEquals(4, new FastCollinearPoints(points).numberOfSegments());
+    }
+
+    @Test
+    public void checkInput299() {
+        In in = new In("/Users/Max_account/IdeaProjects/edu/algs4/src/main/java/edu/hometasks/ht3Mergesort/testCollinear/input299.txt");
+        int n = in.readInt();
+        Point[] points = new Point[n];
+        for (int i = 0; i < n; i++) {
+            int x = in.readInt();
+            int y = in.readInt();
+            points[i] = new Point(x, y);
+        }
+
+
+        assertEquals(6, new FastCollinearPoints(points).numberOfSegments());
+    }
 }
