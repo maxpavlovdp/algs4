@@ -30,6 +30,7 @@ public class FastCollinearPoints {
             List<Point> line = new ArrayList<Point>();
             for (int j = 0; j < sortedAgainstPoint.length; j++) {
                 Point addToLineCandidate = sortedAgainstPoint[j];
+//                - 4 missing entries in student solution, including: (2000, 29000) -> (4000, 29000) -> (22000, 29000) -> (28000, 29000)
 
                 if (
                         (line.size() == 0 && basePoint.compareTo(addToLineCandidate) != 0)
@@ -45,8 +46,9 @@ public class FastCollinearPoints {
                             segments.add(new LineSegment(basePoint, line.get(line.size() - 1)));
                         }
                     }
-                } else if (line.size() == 1) {
-                    line.set(0, addToLineCandidate);
+                } else if (line.size() < 3 && line.size() > 0) {
+                    line = new ArrayList<>();
+                    line.add(0, addToLineCandidate);
                 } else if (line.size() >= 3) {
                     Collections.sort(line);
 
@@ -61,7 +63,7 @@ public class FastCollinearPoints {
             }
         }
 
-        System.out.println(segments);
+//        System.out.println(segments);
     }
 
     private void performValidation(Point[] points) {
