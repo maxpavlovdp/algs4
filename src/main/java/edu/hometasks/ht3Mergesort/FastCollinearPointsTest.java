@@ -48,6 +48,19 @@ public class FastCollinearPointsTest {
     }
 
     @Test
+    public void oneVerticalLineFrom6Points() {
+        Point[] points = new Point[6];
+        points[0] = new Point(-1, -1);
+        points[1] = new Point(0, 2);
+        points[2] = new Point(0, 3);
+        points[3] = new Point(0, 4);
+        points[4] = new Point(0, 5);
+        points[5] = new Point(-2, 5);
+
+        assertEquals(1, new FastCollinearPoints(points).numberOfSegments());
+    }
+
+    @Test
     public void oneHorizontalLineFrom4Points() {
         Point[] points = new Point[4];
         points[0] = new Point(1, 0);
@@ -56,6 +69,27 @@ public class FastCollinearPointsTest {
         points[3] = new Point(4, 0);
 
         assertEquals(1, new FastCollinearPoints(points).numberOfSegments());
+    }
+
+    @Test
+    public void twoHorizontalLines() {
+        Point[] points = new Point[12];
+        points[0] = new Point(10, 0);
+        points[1] = new Point(9, 0);
+        points[2] = new Point(8, 0);
+        points[3] = new Point(7, 0);
+
+        points[4] = new Point(10, 1);
+        points[5] = new Point(9, 1);
+        points[6] = new Point(8, 1);
+        points[7] = new Point(7, 1);
+
+        points[8] = new Point(0, 1);
+        points[9] = new Point(0, 2);
+        points[10] = new Point(0, 3);
+        points[11] = new Point(0, 4);
+
+        assertEquals(3, new FastCollinearPoints(points).numberOfSegments());
     }
 
     @Test

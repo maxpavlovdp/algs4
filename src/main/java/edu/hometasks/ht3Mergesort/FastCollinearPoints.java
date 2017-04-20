@@ -56,11 +56,12 @@ public class FastCollinearPoints {
                     }
 
                     line = new ArrayList<>();
+                    line.add(addToLineCandidate);
                 }
             }
         }
 
-//        System.out.println(segments);
+        System.out.println(segments);
     }
 
     private void performValidation(Point[] points) {
