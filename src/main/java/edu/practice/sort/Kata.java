@@ -1,5 +1,6 @@
-package edu.fackThisCourse;
+package edu.practice.sort;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -127,18 +128,10 @@ Output: 2, 3, 4, 23, 5
     }
 
     public static String[] lineupStudents(String students) {
+        String[] result = students.split(" ");
 
-        String[] nameArray = students.split(" ");
-        List<Tuple> toSort = new ArrayList<>(nameArray.length);
-        for (String s : nameArray) {
-            toSort.add(new Tuple(s.length(), s));
-        }
+        Arrays.sort(result, (a, b) -> a.length() == b.length() ? b.compareTo(a) : Integer.compare(b.length(), a.length()));
 
-        toSort.sort(new Comp());
-
-        System.out.println(toSort.stream().toString());
-
-
-        return toSort.stream().map((item) -> item.name).toArray(String[]::new);
+        return result;
     }
 }

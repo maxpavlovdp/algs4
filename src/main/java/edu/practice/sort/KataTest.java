@@ -1,6 +1,5 @@
-package edu.fackThisCourse;
+package edu.practice.sort;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -13,7 +12,7 @@ import static org.junit.Assert.*;
 public class KataTest {
     @Test
     public void countBits() throws Exception {
-        Assert.assertEquals(5, Kata.countBits(1234));
+        assertEquals(5, Kata.countBits(1234));
     }
 
     @Test
