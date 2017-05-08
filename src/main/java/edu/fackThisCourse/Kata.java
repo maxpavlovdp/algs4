@@ -1,13 +1,12 @@
 package edu.fackThisCourse;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 import java.util.stream.IntStream;
 
 /**
 
  */
-public class JustPracticeAlgorithms {
+public class Kata {
     /*
     Sort an array by value and index
 
@@ -55,7 +54,7 @@ Output: 2, 3, 4, 23, 5
 
 //        return Arrays.stream(toSort).map((el) -> el.value).mapToInt(Integer::intValue).toArray();
 
-        return IntStream.range(0, array.length).boxed().sorted(Comparator.comparingInt(i->array[i]*(i+1))).mapToInt(i->array[i]).toArray();
+        return IntStream.range(0, array.length).boxed().sorted(Comparator.comparingInt(i -> array[i] * (i + 1))).mapToInt(i -> array[i]).toArray();
 
 
 //        return IntStream.range(0, array.length).mapToObj(i -> new ValueIndexNode(i, array[i])).sorted().mapToInt((item) -> item.value).toArray();
@@ -77,5 +76,69 @@ Output: 2, 3, 4, 23, 5
 
         // Show me the code!
         return result;
+    }
+
+    /**
+     * Suzuki needs help lining up his students!
+     * <p>
+     * Today Suzuki will be interviewing his students to ensure they are progressing in their training. He decided to schedule the interviews based on the length of the students name in descending order. The students will line up and wait for their turn.
+     * <p>
+     * You will be given a string of student names. Sort them and return a list of names in descending order.
+     * <p>
+     * Here is an example input:
+     * <p>
+     * string = 'Tadashi Takahiro Takao Takashi Takayuki Takehiko Takeo Takeshi Takeshi'
+     * Here is an example return from your function:
+     * <p>
+     * lst = ['Takehiko',
+     * 'Takayuki',
+     * 'Takahiro',
+     * 'Takeshi',
+     * 'Takeshi',
+     * 'Takashi',
+     * 'Tadashi',
+     * 'Takeo',
+     * 'Takao']
+     */
+    private static class Tuple {
+        private int count;
+        String name;
+
+        Tuple(int count, String name) {
+            this.count = count;
+            this.name = name;
+        }
+
+        public int getCount() {
+            return count;
+        }
+    }
+
+    private static class Comp implements Comparator<Tuple> {
+
+        @Override
+        public int compare(Tuple o1, Tuple o2) {
+            if (o1.count == o2.count) {
+                return o1.name.compareTo(o2.name) * -1;
+            }
+
+            return o1.count < o2.count ? 1 : -1;
+        }
+    }
+
+    public static String[] lineupStudents(String students) {
+
+        String[] nameArray = students.split(" ");
+        List<Tuple> toSort = new ArrayList<>(nameArray.length);
+        for (String s : nameArray) {
+            toSort.add(new Tuple(s.length(), s));
+        }
+
+        toSort.sort(new Comp());
+
+        System.out.println(toSort.stream().toString());
+
+
+        return toSort.stream().map((item) -> item.name).toArray(String[]::new);
     }
 }
