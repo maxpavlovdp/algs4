@@ -67,4 +67,26 @@ public class KataTest {
                 "Nobu", "Miki", "Ryo", "Nao"};
         assertArrayEquals(expectedResult, Kata.lineupStudents("Michio Miki Mikio Minori Minoru Mitsuo Mitsuru Nao Naoki Naoko Noboru Nobu Nobuo Nobuyuki Nori Norio Osamu Rafu Raiden Ringo Rokuro Ronin Ryo Ryoichi Ryota Ryozo Ryuichi Ryuu Saburo Sadao Samuru Satoru Satoshi Seiichi Seiji Senichi Shichiro Shig Shigekazu Shigeo Shigeru Shima Shin Shinichi Shinji Shiro Shoichi Shoji Shuichi Shuji Shunichi Susumu Tadao Tadashi Takahiro Takao Takashi Takayuki Takehiko Takeo Takeshi Takeshi Takumi Tama Tamotsu Taro Tatsuo Tatsuya Teruo Tetsip Tetsuya Tomi Tomio Toru Toshi Toshiaki Toshihiro Toshio Toshiyuki Toyo Tsuneo Tsutomu Tsuyoshi Uyeda Yasahiro Yasuhiro Yasuo Yasushi Yemon Yogi Yoichi Yori Yoshi Yoshiaki Yoshihiro Yoshikazu Yoshimitsu Yoshinori Yoshio Yoshiro Yoshito Yoshiyuki Yuichi Yuji Yuki"));
     }
+
+    @Test
+    public void testSortItOut_1() {
+        assertArrayEquals(Kata.sortItOut(new Double[] {11d,22d,33d,44d,55d,55d,90.4,4d,78d}), new Double[] { 11d,33d,55d,55d,90.4,78d,44d,22d,4d});
+    }
+
+    @Test
+    public void testSortItOut_2() {
+        assertArrayEquals(Kata.sortItOut(new Double[] {26d,243d,52d,2d,432414d,1d,11d,46d,32d}), new Double[] {1d,11d,243d,432414d,52d,46d,32d,26d,2d});
+    }
+    @Test
+    public void testSortItOut_3() {
+        assertArrayEquals(Kata.sortItOut(new Double[] {19d,65d,88d,112d,60d,14d,33d,49d,88d}), new Double[] {19d,33d,49d,65d,112d,88d,88d,60d,14d});
+    }
+    @Test
+    public void testSortItOut_4() {
+        assertArrayEquals(Kata.sortItOut(new Double[0]),(new Double[0]));
+    }
+    @Test
+    public void testSortItOut_5() {
+        assertArrayEquals(Kata.sortItOut(new Double[] {68d,25d,99d,50d,10d,67d,2d,5d,8d,34d,67d}), new Double[] {5d,25d,67d,67d,99d,68d,50d,34d,10d,8d,2d});
+    }
 }

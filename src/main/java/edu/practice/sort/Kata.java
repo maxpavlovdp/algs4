@@ -1,8 +1,10 @@
 package edu.practice.sort;
 
-import java.lang.reflect.Array;
+import com.sun.tools.javac.util.ArrayUtils;
+
 import java.util.*;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
 
@@ -101,32 +103,6 @@ Output: 2, 3, 4, 23, 5
      * 'Takeo',
      * 'Takao']
      */
-    private static class Tuple {
-        private int count;
-        String name;
-
-        Tuple(int count, String name) {
-            this.count = count;
-            this.name = name;
-        }
-
-        public int getCount() {
-            return count;
-        }
-    }
-
-    private static class Comp implements Comparator<Tuple> {
-
-        @Override
-        public int compare(Tuple o1, Tuple o2) {
-            if (o1.count == o2.count) {
-                return o1.name.compareTo(o2.name) * -1;
-            }
-
-            return o1.count < o2.count ? 1 : -1;
-        }
-    }
-
     public static String[] lineupStudents(String students) {
         String[] result = students.split(" ");
 
@@ -134,4 +110,38 @@ Output: 2, 3, 4, 23, 5
 
         return result;
     }
+
+    /**
+     * Given an array of numbers, sort them in such a manner that all the odd numbers in the array are sorted in ascending order and the even numbers are sorted in descending order after the last odd number. For example [1,2,3,4,5,6,7,8,9] produces the output [1,3,5,7,9,8,6,4,2]. If the array contains decimals, round them down while checking for odd/even. The output must have the original numbers!
+     */
+    public static Double[] sortItOut(Double[] array) {
+
+        List<Double> odd = new ArrayList<>();
+        List<Double> even = new ArrayList<>();
+        for (Double n : array) {
+            if (n % 2 == 0) {
+                even.add(n);
+            } else {
+                odd.add(n);
+            }
+        }
+
+        odd.sort(Comparator.naturalOrder());
+        even.sort(Comparator.reverseOrder());
+
+        Double[] result = new Double[odd.size() + even.size()];
+
+        for (int i = 0; i < odd.size(); i++) {
+            result[i] = odd.get(i);
+        }
+
+        for (int i = odd.size(); i < odd.size() + even.size(); i++) {
+            result[i] = even.get(i - odd.size());
+        }
+
+        //your code
+        return result;
+    }
+
+
 }
